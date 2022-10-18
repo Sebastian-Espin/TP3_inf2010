@@ -2,7 +2,10 @@ public class BinaryTree<T> {
     protected BinaryNode<T> root = null;
 
     public void printPostOrder() {
-        printPostOrder(root);
+        if (root != null)
+            printPostOrder(root);
+        else
+            System.out.println("Empty Tree");
     }
 
     private void printPostOrder(BinaryNode<T> node) {
@@ -15,7 +18,10 @@ public class BinaryTree<T> {
     }
 
     public void printPreOrder() {
-        printPreOrder(root);
+        if (root != null)
+            printPreOrder(root);
+        else
+            System.out.println("Empty Tree");
     }
 
     private void printPreOrder(BinaryNode<T> node) {
@@ -28,7 +34,10 @@ public class BinaryTree<T> {
     }
 
     public void printInOrder() {
-        printInOrder(root);
+        if (root != null)
+            printInOrder(root);
+        else
+            System.out.println("Empty Tree");
     }
 
     private void printInOrder(BinaryNode<T> node) {
