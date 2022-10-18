@@ -24,9 +24,18 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
         return contains(value, root);
     }
 
+    // Code pris du libre Data Structures and Algorithm Analysis in Java de Mark Allen Weiss, page 115
     private boolean contains(T value, BinaryNode<T> curNode) {
         //TODO
-        return false;
+        if (curNode == null)
+            return false;
+        int compareResult = value.compareTo(curNode.value);
+        if (compareResult < 0)
+            return contains(value, curNode.left);
+        else if (compareResult > 0)
+            return contains(value, curNode.right);
+        else
+            return true;
     }
 
     @Override
@@ -37,7 +46,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
     protected BinaryNode<T> remove(T value, BinaryNode<T> curNode) {
         //TODO
         if (curNode == null)
-            return curNode;
+            return null;
         int compareResult = value.compareTo(curNode.value);
 
         if (compareResult < 0)
@@ -53,6 +62,11 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
 
     protected BinaryNode<T> findMin(BinaryNode<T> curNode){
         //TODO
-        return null;
+        if (curNode == null)
+            return null;
+        else if (curNode.left == null)
+            return curNode;
+
+        return findMin(curNode.left);
     }
 }
