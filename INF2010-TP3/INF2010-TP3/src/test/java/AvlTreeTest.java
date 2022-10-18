@@ -13,9 +13,11 @@ class AVLTreeTester {
         System.out.println("Parcours préordre de BST: "); bst.printPreOrder(); System.out.println("");
         System.out.println("Parcours en ordre de BST: "); bst.printInOrder(); System.out.println("");
         System.out.println("Parcours par niveau de BST: "); bst.printPostOrder(); System.out.println("");
+        bst.getTreeInfo();
 
         System.out.println("Parcours préordre de AVL: "); avl.printPreOrder(); System.out.println("");
         System.out.println("Parcours en ordre de AVL: "); avl.printInOrder(); System.out.println("");
         System.out.println("Parcours par niveau de AVL: "); avl.printPostOrder(); System.out.println("");
+        avl.getTreeInfo();
     }
 }

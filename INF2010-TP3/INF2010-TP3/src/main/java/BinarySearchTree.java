@@ -1,11 +1,14 @@
 public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> implements Tree<T>{
+    protected Counter counter = new Counter();
     @Override
     public void add(T data) {
         this.root = add(data, root);
+        counter.treeAdd();
     }
 
     protected BinaryNode<T> add(T value, BinaryNode<T> curNode) {
         //TODO
+        counter.treeOperation();
         if (curNode == null)
             return new BinaryNode<T>(value);
         int compareResult = value.compareTo(curNode.value);
@@ -27,6 +30,7 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
     // Code pris du libre Data Structures and Algorithm Analysis in Java de Mark Allen Weiss, page 115
     private boolean contains(T value, BinaryNode<T> curNode) {
         //TODO
+        counter.treeOperation();
         if (curNode == null)
             return false;
         int compareResult = value.compareTo(curNode.value);
@@ -41,10 +45,12 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
     @Override
     public void remove(T value) {
         this.root = remove(value, root);
+        counter.treeAdd();
     }
 
     protected BinaryNode<T> remove(T value, BinaryNode<T> curNode) {
         //TODO
+        counter.treeOperation();
         if (curNode == null)
             return null;
         int compareResult = value.compareTo(curNode.value);
@@ -62,11 +68,16 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> imp
 
     protected BinaryNode<T> findMin(BinaryNode<T> curNode){
         //TODO
+        counter.treeOperation();
         if (curNode == null)
             return null;
         else if (curNode.left == null)
             return curNode;
 
         return findMin(curNode.left);
+    }
+
+    public void getTreeInfo() {
+        counter.getInfo();
     }
 }

@@ -2,6 +2,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
     @Override
     public void add(T value) {
         this.root = add(value, this.root);
+        counter.treeAdd();
     }
 
     protected BinaryNode<T> add(T value, BinaryNode<T> curNode) {
@@ -13,6 +14,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
     @Override
     public void remove(T value) {
         this.root = remove(value, this.root);
+        counter.treeRemove();
     }
 
     protected BinaryNode<T> remove(T value, BinaryNode<T> curNode) {
@@ -23,6 +25,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
 
    //TODO Ajouter les méthodes manquantes
     private BinaryNode<T> balance (BinaryNode<T> curNode) {
+        counter.treeOperation();
         if (curNode == null)
             return null;
         if (height(curNode.left) - height(curNode.right) > 1) {
@@ -42,6 +45,7 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
         return curNode;
     }
     private BinaryNode<T> rotateWithLeftChild (BinaryNode<T> k2) {
+        counter.treeOperation();
         BinaryNode<T> k1 = k2.left;
         k2.left = k1.right;
         k1.right = k2;
@@ -51,11 +55,13 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
         return k1;
     }
     private BinaryNode<T> doubleWithLeftChild (BinaryNode<T> k3) {
+        counter.decrementCount();
         k3.left = rotateWithRightChild(k3.left);
         return rotateWithLeftChild(k3);
     }
 
     private BinaryNode<T> rotateWithRightChild (BinaryNode<T> k1) {
+        counter.treeOperation();
         BinaryNode<T> k2 = k1.right;
         k1.right = k2.left;
         k2.left = k1;
@@ -66,14 +72,15 @@ public class AvlTree<T extends Comparable<T>> extends BinarySearchTree<T>{
         return k2;
     }
     private BinaryNode<T> doubleWithRightChild (BinaryNode<T> k1) {
+        counter.decrementCount();
         k1.right = rotateWithLeftChild(k1.right);
         return rotateWithRightChild(k1);
     }
 
     private int height (BinaryNode<T> curNode) {
+        counter.treeOperation();
         return curNode == null ? -1 : curNode.height;
     }
-
 
 
 }
