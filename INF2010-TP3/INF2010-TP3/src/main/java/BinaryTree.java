@@ -7,6 +7,11 @@ public class BinaryTree<T> {
 
     private void printPostOrder(BinaryNode<T> node) {
         // TODO
+        if (node != null){
+            printPostOrder(node.left);
+            printPostOrder(node.right);
+            System.out.println(node.value);
+        }
     }
 
     public void printPreOrder() {
@@ -15,6 +20,11 @@ public class BinaryTree<T> {
 
     private void printPreOrder(BinaryNode<T> node) {
         // TODO
+        if (node != null){
+            System.out.println(node.value);
+            printPreOrder(node.left);
+            printPreOrder(node.right);
+        }
     }
 
     public void printInOrder() {
@@ -23,6 +33,11 @@ public class BinaryTree<T> {
 
     private void printInOrder(BinaryNode<T> node) {
         // TODO
+        if (node != null) {
+            printInOrder(node.left);
+            System.out.println(node.value);
+            printInOrder(node.right);
+        }
     }
 }
 
